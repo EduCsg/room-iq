@@ -587,7 +587,6 @@ room-reservation-api/
 
 This project includes comprehensive documentation:
 
-- **[QUICKSTART.md](QUICKSTART.md)** - Get started in 5 minutes
 - **[SWAGGER_GUIDE.md](SWAGGER_GUIDE.md)** - Learn how to use the interactive API docs
 - **[ARCHITECTURE.md](ARCHITECTURE.md)** - Understand the system design and architecture
 - **README.md** (this file) - Complete API reference
