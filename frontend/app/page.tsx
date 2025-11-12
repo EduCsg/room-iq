@@ -1,25 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
 import {
   Card,
   CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
-  CardDescription,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { api } from "@/lib/api";
-import { Bloco, Sala, Equipamento, Usuario, Reserva } from "@/lib/types";
+import { Bloco, Equipamento, Reserva, Sala, Usuario } from "@/lib/types";
 import {
-  Users,
+  ArrowRight,
   Building2,
-  Package,
   Calendar,
   DoorOpen,
-  ArrowRight,
+  Package,
+  Users,
 } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function DashboardPage() {
   const [blocos, setBlocos] = useState<Bloco[]>([]);
@@ -184,7 +183,7 @@ export default function DashboardPage() {
                         {reserva.usuario_nome || "Unknown User"}
                       </p>
                       <p className="text-xs text-muted-foreground">
-                        {new Date(reserva.data_reserva).toLocaleDateString()}
+                        {reserva.data_reserva.split("T")[0]}
                       </p>
                     </div>
                     <span
