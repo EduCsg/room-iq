@@ -1,0 +1,509 @@
+{
+  "info": {
+    "name": "Room Reservation API",
+    "description": "Complete API collection for testing the room reservation system",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Blocos",
+      "item": [
+        {
+          "name": "Get All Blocos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/blocos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "blocos"]
+            }
+          }
+        },
+        {
+          "name": "Get Bloco by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/blocos/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "blocos", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create Bloco",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Bloco D\",\n  \"descricao\": \"Novo bloco de laboratórios\",\n  \"andar\": \"3º Andar\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/blocos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "blocos"]
+            }
+          }
+        },
+        {
+          "name": "Update Bloco",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Bloco D Atualizado\",\n  \"descricao\": \"Descrição atualizada\",\n  \"andar\": \"3º Andar\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/blocos/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "blocos", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Bloco",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/blocos/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "blocos", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Salas",
+      "item": [
+        {
+          "name": "Get All Salas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/salas",
+              "host": ["{{base_url}}"],
+              "path": ["api", "salas"]
+            }
+          }
+        },
+        {
+          "name": "Get Sala by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/salas/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "salas", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create Sala",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Sala 301\",\n  \"descricao\": \"Sala de conferência\",\n  \"capacidade\": 50,\n  \"bloco_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/salas",
+              "host": ["{{base_url}}"],
+              "path": ["api", "salas"]
+            }
+          }
+        },
+        {
+          "name": "Update Sala",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Sala 301 Updated\",\n  \"descricao\": \"Sala de conferência grande\",\n  \"capacidade\": 60,\n  \"bloco_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/salas/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "salas", "1"]
+            }
+          }
+        },
+        {
+          "name": "Add Equipamento to Sala",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"equipamento_id\": 2\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/salas/1/equipamentos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "salas", "1", "equipamentos"]
+            }
+          }
+        },
+        {
+          "name": "Remove Equipamento from Sala",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/salas/1/equipamentos/2",
+              "host": ["{{base_url}}"],
+              "path": ["api", "salas", "1", "equipamentos", "2"]
+            }
+          }
+        },
+        {
+          "name": "Delete Sala",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/salas/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "salas", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Equipamentos",
+      "item": [
+        {
+          "name": "Get All Equipamentos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/equipamentos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "equipamentos"]
+            }
+          }
+        },
+        {
+          "name": "Get Equipamento by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/equipamentos/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "equipamentos", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create Equipamento",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Notebook\",\n  \"descricao\": \"Notebook Dell i5\",\n  \"quantidade\": 10\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/equipamentos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "equipamentos"]
+            }
+          }
+        },
+        {
+          "name": "Update Equipamento",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Notebook\",\n  \"descricao\": \"Notebook Dell i7\",\n  \"quantidade\": 15\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/equipamentos/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "equipamentos", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Equipamento",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/equipamentos/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "equipamentos", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Usuarios",
+      "item": [
+        {
+          "name": "Get All Usuarios",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/usuarios",
+              "host": ["{{base_url}}"],
+              "path": ["api", "usuarios"]
+            }
+          }
+        },
+        {
+          "name": "Get Usuario by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/usuarios/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "usuarios", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create Usuario",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Carlos Mendes\",\n  \"email\": \"carlos.mendes@email.com\",\n  \"senha\": \"securePassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/usuarios",
+              "host": ["{{base_url}}"],
+              "path": ["api", "usuarios"]
+            }
+          }
+        },
+        {
+          "name": "Update Usuario",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Carlos Mendes Silva\",\n  \"email\": \"carlos.silva@email.com\",\n  \"senha\": \"newPassword456\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/usuarios/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "usuarios", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Usuario",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/usuarios/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "usuarios", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reservas",
+      "item": [
+        {
+          "name": "Get All Reservas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/reservas",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reservas"]
+            }
+          }
+        },
+        {
+          "name": "Get Reserva by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/reservas/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reservas", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Reservas by Usuario",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/reservas/usuario/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reservas", "usuario", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Reservas by Sala",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/reservas/sala/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reservas", "sala", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create Reserva",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"pendente\",\n  \"data_reserva\": \"2025-11-20\",\n  \"hora_inicio\": \"2025-11-20T14:00:00\",\n  \"hora_fim\": \"2025-11-20T16:00:00\",\n  \"usuario_id\": 1,\n  \"sala_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/reservas",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reservas"]
+            }
+          }
+        },
+        {
+          "name": "Update Reserva",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"confirmada\",\n  \"data_reserva\": \"2025-11-20\",\n  \"hora_inicio\": \"2025-11-20T15:00:00\",\n  \"hora_fim\": \"2025-11-20T17:00:00\",\n  \"usuario_id\": 1,\n  \"sala_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/reservas/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reservas", "1"]
+            }
+          }
+        },
+        {
+          "name": "Update Reserva Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"cancelada\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/reservas/1/status",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reservas", "1", "status"]
+            }
+          }
+        },
+        {
+          "name": "Delete Reserva",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/reservas/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reservas", "1"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}
