@@ -13,6 +13,7 @@ const setupDatabase = async () => {
     await client.query("DROP TABLE IF EXISTS salas CASCADE");
     await client.query("DROP TABLE IF EXISTS equipamentos CASCADE");
     await client.query("DROP TABLE IF EXISTS blocos CASCADE");
+    await client.query("DROP TABLE IF EXISTS status_reservas CASCADE");
 
     // Create blocos table
     await client.query(`
@@ -89,11 +90,20 @@ const setupDatabase = async () => {
     `);
     console.log("✓ Table usuarios created");
 
+    // Create status_reservas table
+    await client.query(`
+      CREATE TABLE status_reservas (
+        status_id SERIAL PRIMARY KEY,
+        descricao VARCHAR(25) NOT NULL
+      )
+    `);
+    console.log("✓ Table status_reservas created");
+
     // Create reservas table
     await client.query(`
       CREATE TABLE reservas (
         reserva_id SERIAL PRIMARY KEY,
-        status VARCHAR(25) NOT NULL,
+        status INT NOT NULL,
         data_reserva TIMESTAMPTZ NOT NULL,
         hora_inicio TIMESTAMPTZ NOT NULL,
         hora_fim TIMESTAMPTZ,
@@ -106,6 +116,10 @@ const setupDatabase = async () => {
         CONSTRAINT fk_reservas_sala
           FOREIGN KEY (sala_id)
           REFERENCES salas (sala_id)
+          ON DELETE SET NULL,
+        CONSTRAINT fk_reservas_status
+          FOREIGN KEY (status)
+          REFERENCES status_reservas (status_id)
           ON DELETE SET NULL
       )
     `);
@@ -184,13 +198,22 @@ const insertSampleData = async (client: any) => {
   `);
   console.log("  ✓ Usuarios inserted");
 
+  // Insert status_reservas
+  await client.query(`
+    INSERT INTO status_reservas (descricao) VALUES
+    ('Pendente'),
+    ('Confirmada'),
+    ('Cancelada')
+  `);
+  console.log("  ✓ Status_Reservas inserted");
+
   // Insert reservas
   await client.query(`
     INSERT INTO reservas (status, data_reserva, hora_inicio, hora_fim, usuario_id, sala_id) VALUES
-    ('confirmada', '2025-11-10', '2025-11-10 09:00:00', '2025-11-10 11:00:00', 1, 1),
-    ('confirmada', '2025-11-10', '2025-11-10 14:00:00', '2025-11-10 16:00:00', 2, 3),
-    ('pendente', '2025-11-11', '2025-11-11 10:00:00', '2025-11-11 12:00:00', 3, 4),
-    ('confirmada', '2025-11-12', '2025-11-12 08:00:00', '2025-11-12 10:00:00', 1, 5)
+    (1, '2025-11-10', '2025-11-10 09:00:00', '2025-11-10 11:00:00', 1, 1),
+    (2, '2025-11-10', '2025-11-10 14:00:00', '2025-11-10 16:00:00', 2, 3),
+    (3, '2025-11-11', '2025-11-11 10:00:00', '2025-11-11 12:00:00', 3, 4),
+    (2, '2025-11-12', '2025-11-12 08:00:00', '2025-11-12 10:00:00', 1, 5)
   `);
   console.log("  ✓ Reservas inserted");
 };
